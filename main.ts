@@ -1,4 +1,4 @@
-import { layer, toKey, withModifier, writeToProfile } from "karabiner.ts";
+import { layer, map, toKey, withCondition, withModifier, writeToProfile } from "karabiner.ts";
 import { exit } from "process";
 
 const profileName = process.argv[2];
@@ -12,19 +12,18 @@ writeToProfile(profileName, [
   layer("caps_lock")
     .notification("CapsLock Layer: Vim + Efficinet symbol typings")
     .configKey((v) => v.toIfAlone("escape"), true)
+    .modifiers("??")
     .manipulators([
-      withModifier("??")({
-        h: toKey("←"),
-        j: toKey("↓"),
-        k: toKey("↑"),
-        l: toKey("→"),
-        y: toKey("`"),
-        u: toKey("["),
-        i: toKey("]"),
-        o: toKey("\\"),
-        n: toKey("-"),
-        m: toKey("="),
-        return_or_enter: toKey("caps_lock"),
-      }),
+      map('h').to("←"),
+      map('j').to("↓"),
+      map('k').to("↑"),
+      map('l').to("→"),
+      map('y').to("`"),
+      map('u').to("["),
+      map('i').to("]"),
+      map('o').to("\\"),
+      map('n').to("-"),
+      map('m').to("="),
+      map('return_or_enter').to('caps_lock')
     ]),
 ]);
