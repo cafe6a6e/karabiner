@@ -1,4 +1,4 @@
-import { layer, map, toKey, withCondition, withModifier, writeToProfile } from "karabiner.ts";
+import { layer, map, writeToProfile } from "karabiner.ts";
 import { exit } from "process";
 
 const profileName = process.argv[2];
