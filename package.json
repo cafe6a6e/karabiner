@@ -1,0 +1,21 @@
+{
+  "name": "karabiner",
+  "version": "1.0.0",
+  "main": "main.ts",
+  "repository": "git@github.com:CafebabeTimeLapse/karabiner.git",
+  "author": "CafebabeTimeLapse <taka1stdec@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "ts-node main.ts",
+    "build:default": "ts-node main.ts 'Default profile'"
+  },
+  "dependencies": {
+    "karabiner.ts": "^1.29.0",
+    "prettier": "^3.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10"
+  }
+}
