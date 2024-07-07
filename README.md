@@ -12,11 +12,11 @@ My Karabiner-Element settings
 `Default profile` is overwritten by
 
 ```
-$ yarn build:default
+$ yarn apply:default
 ```
 
 If you want to overwrite `'Your profile'`, run
 
 ```
-$ yarn build 'Your profile'
+$ yarn apply 'Your profile'
 ```

@@ -6,14 +6,14 @@
   "author": "CafebabeTimeLapse <taka1stdec@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "ts-node main.ts",
-    "build:default": "ts-node main.ts 'Default profile'"
+    "apply": "ts-node main.ts",
+    "apply:default": "yarn apply 'Default profile'"
   },
   "dependencies": {
     "karabiner.ts": "^1.29.0",
     "prettier": "^3.3.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "typescript": "^6.5.3"
   },
   "devDependencies": {
     "@types/node": "^20.14.10"
