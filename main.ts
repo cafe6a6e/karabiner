@@ -22,8 +22,8 @@ writeToProfile(profileName, [
       map('i').to("["),
       map('o').to("]"),
       map('p').to("\\"),
-      map('n').to("-"),
-      map('m').to("="),
-      map('return_or_enter').to('caps_lock')
+      map('m').to("-"),
+      map(',').to("="),
+      map('⏎').to('⇪')
     ]),
 ]);
