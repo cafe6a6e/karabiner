@@ -10,8 +10,12 @@ if (!profileName) {
 
 writeToProfile(profileName, [
   duoLayer("f", "⇪")
-    .notification("f-layer: `~[]{}\\|")
+    .notification("f-layer: `~[]{}\\| and -=_+")
     .manipulators([
+      map("m").to("-"),
+      map(",").to("="),
+      map(".").to("-", "shift"),
+      map("/").to("=", "shift"),
       map("j").to("`"),
       map("k").to("["),
       map("l").to("]"),
