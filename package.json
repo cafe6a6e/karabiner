@@ -6,6 +6,7 @@
   "author": "CafebabeTimeLapse <taka1stdec@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "preapply": "prettier -w main.ts",
     "apply": "ts-node main.ts",
     "apply:default": "yarn apply 'Default profile'"
   },
