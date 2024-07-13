@@ -10,23 +10,7 @@ if (!profileName) {
 
 writeToProfile(profileName, [
   duoLayer("f", "⇪")
-    .notification("f-layer: `~[]{}\\| and -=_+")
-    .manipulators([
-      map("m").to("-"),
-      map(",").to("="),
-      map(".").to("-", "shift"),
-      map("/").to("=", "shift"),
-      map("j").to("`"),
-      map("k").to("["),
-      map("l").to("]"),
-      map(";").to("\\"),
-      map("u").to("`", "shift"),
-      map("i").to("[", "shift"),
-      map("o").to("]", "shift"),
-      map("p").to("\\", "shift"),
-    ]),
-  duoLayer("d", "⇪")
-    .notification("d-layer: !@#$%^&*() and =_")
+    .notification("f-layer: num+⇪ symbols and =_")
     .manipulators([
       map("m").to("1", "shift"),
       map(",").to("2", "shift"),
@@ -41,8 +25,8 @@ writeToProfile(profileName, [
       map("/").to("="),
       map(";").to("-", "shift"),
     ]),
-  duoLayer("s", "⇪")
-    .notification("s-layer: 1234567890 and +-")
+  duoLayer("␣", "⇪")
+    .notification("␣-layer: num and +-")
     .manipulators([
       map("m").to("1"),
       map(",").to("2"),
@@ -58,7 +42,7 @@ writeToProfile(profileName, [
       map(";").to("-"),
     ]),
   layer("caps_lock")
-    .notification("CapsLock Layer: Vim")
+    .notification("CapsLock Layer: Vim + []\\`{}|")
     .configKey((v) => v.toIfAlone("escape"), true)
     .modifiers("??")
     .manipulators([
@@ -66,5 +50,13 @@ writeToProfile(profileName, [
       map("j").to("↓"),
       map("k").to("↑"),
       map("l").to("→"),
+      map("u").to("`"),
+      map("i").to("["),
+      map("o").to("]"),
+      map("p").to("\\"),
+      map("m").to("`", "shift"),
+      map(",").to("[", "shift"),
+      map(".").to("]", "shift"),
+      map("/").to("\\", "shift"),
     ]),
 ]);
