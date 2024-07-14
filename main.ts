@@ -44,6 +44,7 @@ writeToProfile(profileName, [
   layer("⇪")
     .notification("⇪-Layer: ←↓↑→ ()[]{} `| -= _+ \\~ ")
     .configKey((v) => v.toIfAlone("escape"), true)
+    .modifiers("??")
     .manipulators([
       map("q").to("`", "shift"),
       map("a").to("\\"),
