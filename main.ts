@@ -9,8 +9,8 @@ if (!profileName) {
 }
 
 writeToProfile(profileName, [
-  duoLayer("a", "⇪")
-    .notification("⇪a-layer: num+⇪ symbols and =_")
+  duoLayer("f", "⇪")
+    .notification("⇪f-layer: num+⇪ symbols and =_")
     .manipulators([
       map("m").to("1", "shift"),
       map(",").to("2", "shift"),
