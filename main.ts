@@ -9,8 +9,8 @@ if (!profileName) {
 }
 
 writeToProfile(profileName, [
-  duoLayer("f", "⇪")
-    .notification("f-layer: num+⇪ symbols and =_")
+  duoLayer("a", "⇪")
+    .notification("⇪a-layer: num+⇪ symbols and =_")
     .manipulators([
       map("m").to("1", "shift"),
       map(",").to("2", "shift"),
@@ -26,7 +26,7 @@ writeToProfile(profileName, [
       map(";").to("-", "shift"),
     ]),
   duoLayer("␣", "⇪")
-    .notification("␣-layer: num and +-")
+    .notification("⇪␣-layer: num and +-")
     .manipulators([
       map("m").to("1"),
       map(",").to("2"),
@@ -41,22 +41,27 @@ writeToProfile(profileName, [
       map("/").to("=", "shift"),
       map(";").to("-"),
     ]),
-  layer("caps_lock")
-    .notification("CapsLock Layer: Vim + []\\`{}|")
+  layer("⇪")
+    .notification("⇪-Layer: ←↓↑→ ()[]{} `| -= _+ \\~ ")
     .configKey((v) => v.toIfAlone("escape"), true)
-    .modifiers("??")
     .manipulators([
+      map("q").to("`", "shift"),
+      map("a").to("\\"),
+      map("y").to("`"),
+      map("u").to("[", "shift"),
+      map("i").to("]", "shift"),
+      map("o").to("9", "shift"),
+      map("p").to("0", "shift"),
       map("h").to("←"),
       map("j").to("↓"),
       map("k").to("↑"),
       map("l").to("→"),
-      map("u").to("`"),
-      map("i").to("["),
-      map("o").to("]"),
-      map("p").to("\\"),
-      map("m").to("`", "shift"),
-      map(",").to("[", "shift"),
-      map(".").to("]", "shift"),
-      map("/").to("\\", "shift"),
+      map(";").to("-"),
+      map("'").to("="),
+      map("n").to("\\", "shift"),
+      map("m").to("["),
+      map(",").to("]"),
+      map(".").to("-", "shift"),
+      map("/").to("=", "shift"),
     ]),
 ]);
