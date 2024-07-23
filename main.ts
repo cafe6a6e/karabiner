@@ -1,4 +1,12 @@
-import { duoLayer, layer, map, simlayer, writeToProfile } from "karabiner.ts";
+import {
+  duoLayer,
+  ifVar,
+  layer,
+  map,
+  mouseMotionToScroll,
+  rule,
+  writeToProfile,
+} from "karabiner.ts";
 import { exit } from "process";
 
 const profileName = process.argv[2];
@@ -7,6 +15,8 @@ if (!profileName) {
   console.info("Profile name not set. \nSee README.md for the usage.\n");
   exit(1);
 }
+
+const capsLockLayerVarName = "layer-caps_lock";
 
 writeToProfile(profileName, [
   duoLayer("f", "⇪")
@@ -41,7 +51,7 @@ writeToProfile(profileName, [
       map("/").to("=", "shift"),
       map(";").to("-"),
     ]),
-  layer("⇪")
+  layer("⇪", capsLockLayerVarName)
     .notification("⇪-Layer: ←↓↑→ ()[]{} `| -= _+ \\~ ")
     .configKey((v) => v.toIfAlone("escape"), true)
     .modifiers("??")
@@ -65,4 +75,7 @@ writeToProfile(profileName, [
       map(".").to("-", "shift"),
       map("/").to("=", "shift"),
     ]),
+  rule("mose motion to scroll during caps_lock pressed").manipulators([
+    mouseMotionToScroll().condition(ifVar(capsLockLayerVarName)),
+  ]),
 ]);
