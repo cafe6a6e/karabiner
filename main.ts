@@ -76,6 +76,10 @@ writeToProfile(profileName, [
       map("/").to("=", "shift"),
     ]),
   rule("Mouse motion to scroll during caps_lock pressed").manipulators([
-    mouseMotionToScroll().condition(ifVar(capsLockLayerVarName)),
+    mouseMotionToScroll()
+      .options({
+        momentum_scroll_enabled: false,
+      })
+      .condition(ifVar(capsLockLayerVarName)),
   ]),
 ]);
