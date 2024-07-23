@@ -75,7 +75,7 @@ writeToProfile(profileName, [
       map(".").to("-", "shift"),
       map("/").to("=", "shift"),
     ]),
-  rule("mose motion to scroll during caps_lock pressed").manipulators([
+  rule("Mouse motion to scroll during caps_lock pressed").manipulators([
     mouseMotionToScroll().condition(ifVar(capsLockLayerVarName)),
   ]),
 ]);
