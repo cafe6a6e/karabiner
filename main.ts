@@ -3,6 +3,7 @@ import {
   ifVar,
   layer,
   map,
+  mapPointingButton,
   mouseMotionToScroll,
   rule,
   writeToProfile,
@@ -74,8 +75,10 @@ writeToProfile(profileName, [
       map(",").to("]"),
       map(".").to("-", "shift"),
       map("/").to("=", "shift"),
+      mapPointingButton("button1").to("←", "command"),
+      mapPointingButton("button2").to("→", "command"),
     ]),
-  rule("Mouse motion to scroll during caps_lock pressed").manipulators([
+  rule("Trackball mouse motion").manipulators([
     mouseMotionToScroll()
       .options({
         momentum_scroll_enabled: false,
