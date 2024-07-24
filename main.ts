@@ -36,9 +36,10 @@ writeToProfile(profileName, [
       map("/").to("="),
       map(";").to("-", "shift"),
     ]),
-  duoLayer("␣", "⇪")
-    .notification("⇪␣-layer: num and +-")
+  duoLayer("g", "⇪")
+    .notification("⇪g-layer: num and +-")
     .manipulators([
+      map("␣").to("0"),
       map("m").to("1"),
       map(",").to("2"),
       map(".").to("3"),
@@ -51,6 +52,7 @@ writeToProfile(profileName, [
       map("p").to("0"),
       map("/").to("=", "shift"),
       map(";").to("-"),
+      map("p").to("8", "shift"),
     ]),
   layer("⇪", capsLockLayerVarName)
     .notification("⇪-Layer: ←↓↑→ ()[]{} `| -= _+ \\~ ")
