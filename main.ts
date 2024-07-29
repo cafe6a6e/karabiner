@@ -18,9 +18,11 @@ if (!profileName) {
 }
 
 const capsLockLayerVarName = "layer-caps_lock";
+const fKeyLayerVarName = "layer-f";
+const gKeyLayerVarName = "layer-g";
 
 writeToProfile(profileName, [
-  duoLayer("f", "⇪")
+  duoLayer("f", "⇪", fKeyLayerVarName)
     .notification("⇪f-layer: num+⇪ symbols and =_")
     .manipulators([
       map("m").to("1", "shift"),
@@ -36,7 +38,7 @@ writeToProfile(profileName, [
       map("/").to("="),
       map(";").to("-", "shift"),
     ]),
-  duoLayer("g", "⇪")
+  duoLayer("g", "⇪", gKeyLayerVarName)
     .notification("⇪g-layer: num and +-")
     .manipulators([
       map("␣").to("0"),
@@ -79,6 +81,8 @@ writeToProfile(profileName, [
       map("/").to("=", "shift"),
       mapPointingButton("button1").to("←", "command"),
       mapPointingButton("button2").to("→", "command"),
+      map("f").toVar(fKeyLayerVarName, 1, 0),
+      map("g").toVar(gKeyLayerVarName, 1, 0),
     ]),
   rule("Trackball mouse motion").manipulators([
     mouseMotionToScroll()
