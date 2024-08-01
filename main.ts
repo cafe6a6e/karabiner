@@ -81,6 +81,7 @@ writeToProfile(profileName, [
       map("/").to("=", "shift"),
       mapPointingButton("button1").to("←", "command"),
       mapPointingButton("button2").to("→", "command"),
+      mapPointingButton("button3").to("mission_control"),
       map("f").toVar(fKeyLayerVarName, 1, 0),
       map("g").toVar(gKeyLayerVarName, 1, 0),
     ]),
