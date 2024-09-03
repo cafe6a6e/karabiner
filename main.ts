@@ -55,6 +55,7 @@ writeToProfile(profileName, [
       map("/").to("=", "shift"),
       map(";").to("-"),
       map("p").to("8", "shift"),
+      map("right_command").to("."),
     ]),
   layer("⇪", capsLockLayerVarName)
     .notification("⇪-Layer: ←↓↑→ ()[]{} `| -= _+ \\~ ")
