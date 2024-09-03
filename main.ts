@@ -55,6 +55,7 @@ writeToProfile(profileName, [
       map("/").to("=", "shift"),
       map(";").to("-"),
       map("p").to("8", "shift"),
+      map("right_command").to("."),
     ]),
   layer("⇪", capsLockLayerVarName)
     .notification("⇪-Layer: ←↓↑→ ()[]{} `| -= _+ \\~ ")
@@ -75,9 +76,9 @@ writeToProfile(profileName, [
       map(";").to("-"),
       map("'").to("="),
       map("n").to("\\", "shift"),
-      map("m").to("["),
-      map(",").to("]"),
-      map(".").to("-", "shift"),
+      map("m").to("-", "shift"),
+      map(",").to("["),
+      map(".").to("]"),
       map("/").to("=", "shift"),
       mapPointingButton("button1").to("←", "command"),
       mapPointingButton("button2").to("→", "command"),
