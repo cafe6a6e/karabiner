@@ -59,7 +59,7 @@ writeToProfile(profileName, [
     ]),
   layer("⇪", capsLockLayerVarName)
     .notification("⇪-Layer: ←↓↑→ ()[]{} `| -= _+ \\~ ")
-    .configKey((v) => v.toIfAlone("escape"), true)
+    .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
     .modifiers("??")
     .manipulators([
       map("q").to("`", "shift"),
