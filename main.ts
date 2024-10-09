@@ -32,7 +32,8 @@ writeToProfile(profileName, [
     map("i").to("8", "shift"),
     map("o").to("9", "shift"),
     map("p").to("0", "shift"),
-    map("[").to("\\"),
+    map("/").to("\\"),
+    map("'").to("`", "shift"),
   ]),
   rule("Numeric keypad").manipulators([
     map("␣", "⌥").to("0"),
@@ -56,7 +57,6 @@ writeToProfile(profileName, [
       map("i").to("]", "shift"),
       map("o").to("9", "shift"),
       map("p").to("0", "shift"),
-      map("[").to("`", "shift"),
       map("h").to("←"),
       map("j").to("↓"),
       map("k").to("↑"),
