@@ -21,35 +21,32 @@ const capsLockLayerVarName = "layer-caps_lock";
 const tabLayerVarName = "layer-tab";
 
 writeToProfile(profileName, [
-  layer("tab", tabLayerVarName)
-    .manipulators([
-      // symbols
-      map("m").to("1", "shift"),
-      map(",").to("2", "shift"),
-      map(".").to("3", "shift"),
-      map("j").to("4", "shift"),
-      map("k").to("5", "shift"),
-      map("l").to("6", "shift"),
-      map("u").to("7", "shift"),
-      map("i").to("8", "shift"),
-      map("o").to("9", "shift"),
-      map("p").to("0", "shift"),
-
-      // numbers
-      map("␣", "shift").to("0"),
-      map("m", "shift").to("1"),
-      map(",", "shift").to("2"),
-      map(".", "shift").to("3"),
-      map("j", "shift").to("4"),
-      map("k", "shift").to("5"),
-      map("l", "shift").to("6"),
-      map("u", "shift").to("7"),
-      map("i", "shift").to("8"),
-      map("o", "shift").to("9"),
-      map("/", "shift").to("."),
-    ]),
+  layer("tab", tabLayerVarName).manipulators([
+    map("m").to("1", "shift"),
+    map(",").to("2", "shift"),
+    map(".").to("3", "shift"),
+    map("j").to("4", "shift"),
+    map("k").to("5", "shift"),
+    map("l").to("6", "shift"),
+    map("u").to("7", "shift"),
+    map("i").to("8", "shift"),
+    map("o").to("9", "shift"),
+    map("p").to("0", "shift"),
+  ]),
+  rule("Numeric keypad").manipulators([
+    map("␣", "⌥").to("0"),
+    map("m", "⌥").to("1"),
+    map(",", "⌥").to("2"),
+    map(".", "⌥").to("3"),
+    map("j", "⌥").to("4"),
+    map("k", "⌥").to("5"),
+    map("l", "⌥").to("6"),
+    map("u", "⌥").to("7"),
+    map("i", "⌥").to("8"),
+    map("o", "⌥").to("9"),
+    map("/", "⌥").to("."),
+  ]),
   layer("⇪", capsLockLayerVarName)
-    .notification("⇪-Layer: ←↓↑→ ()[]{} `| -= _+ \\~ ")
     .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
     .modifiers("??")
     .manipulators([
