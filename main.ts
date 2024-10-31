@@ -79,4 +79,5 @@ writeToProfile(profileName, [
       })
       .condition(ifVar(capsLockLayerVarName)),
   ]),
+  rule("Delete key").manipulators([map("[").to("⌫")]),
 ]);
