@@ -21,20 +21,23 @@ const capsLockLayerVarName = "layer-caps_lock";
 const tabLayerVarName = "layer-tab";
 
 writeToProfile(profileName, [
-  layer("tab", tabLayerVarName).manipulators([
-    map("m").to("1", "shift"),
-    map(",").to("2", "shift"),
-    map(".").to("3", "shift"),
-    map("j").to("4", "shift"),
-    map("k").to("5", "shift"),
-    map("l").to("6", "shift"),
-    map("u").to("7", "shift"),
-    map("i").to("8", "shift"),
-    map("o").to("9", "shift"),
-    map("p").to("0", "shift"),
-    map("/").to("\\"),
-    map("'").to("`", "shift"),
-  ]),
+  layer("tab", tabLayerVarName)
+    .modifiers("??")
+    .manipulators([
+      map("m").to("1", "shift"),
+      map(",").to("2", "shift"),
+      map(".").to("3", "shift"),
+      map("j").to("4", "shift"),
+      map("k").to("5", "shift"),
+      map("l").to("6", "shift"),
+      map("u").to("7", "shift"),
+      map("i").to("8", "shift"),
+      map("o").to("9", "shift"),
+      map("p").to("0", "shift"),
+      map("/").to("\\"),
+      map("'").to("`", "shift"),
+      map("y").to("'"),
+    ]),
   rule("Numeric keypad").manipulators([
     map("␣", "⌥").to("0"),
     map("m", "⌥").to("1"),
@@ -79,5 +82,5 @@ writeToProfile(profileName, [
       })
       .condition(ifVar(capsLockLayerVarName)),
   ]),
-  rule("Delete key").manipulators([map("[").to("⌫")]),
+  rule("Delete & Enter key").manipulators([map("[").to("⌫"), map("'").to("⏎")]),
 ]);
