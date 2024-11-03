@@ -63,7 +63,9 @@ writeToProfile(profileName, [
   ]),
   rule("Delete & Enter & Num key").manipulators([
     map("[").to("⌫"),
+    map("[", "shift").to("⌫"),
     map("'").to("⏎"),
+    map("'", "shift").to("⏎"),
     map("m", "⌥").to("1"),
     map(",", "⌥").to("2"),
     map(".", "⌥").to("3"),
