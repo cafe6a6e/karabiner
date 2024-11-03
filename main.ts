@@ -21,18 +21,6 @@ const tabLayerVarName = "layer-tab";
 
 writeToProfile(profileName, [
   layer("tab", tabLayerVarName).manipulators([
-    map("f").to("left_shift"),
-    map("m", "shift").to("1"),
-    map(",", "shift").to("2"),
-    map(".", "shift").to("3"),
-    map("j", "shift").to("4"),
-    map("k", "shift").to("5"),
-    map("l", "shift").to("6"),
-    map("u", "shift").to("7"),
-    map("i", "shift").to("8"),
-    map("o", "shift").to("9"),
-    map("␣", "shift").to("0"),
-    map("p", "shift").to("0"),
     map("m").to("1", "shift"),
     map(",").to("2", "shift"),
     map(".").to("3", "shift"),
@@ -43,8 +31,6 @@ writeToProfile(profileName, [
     map("i").to("8", "shift"),
     map("o").to("9", "shift"),
     map("p").to("0", "shift"),
-    // period in the same layer
-    map("/", "shift").to("."),
   ]),
   layer("⇪", capsLockLayerVarName)
     .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
@@ -75,9 +61,19 @@ writeToProfile(profileName, [
       })
       .condition(ifVar(capsLockLayerVarName)),
   ]),
-  rule("Delete & Enter key").manipulators([
+  rule("Delete & Enter & Num key").manipulators([
     map("[").to("⌫"),
-    map("[", "shift").to("⌦"),
     map("'").to("⏎"),
+    map("m", "⌥").to("1"),
+    map(",", "⌥").to("2"),
+    map(".", "⌥").to("3"),
+    map("j", "⌥").to("4"),
+    map("k", "⌥").to("5"),
+    map("l", "⌥").to("6"),
+    map("u", "⌥").to("7"),
+    map("i", "⌥").to("8"),
+    map("o", "⌥").to("9"),
+    map("␣", "⌥").to("0"),
+    map("/", "⌥").to("."),
   ]),
 ]);
