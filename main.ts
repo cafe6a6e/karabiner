@@ -42,7 +42,6 @@ writeToProfile(profileName, [
     map("u").to("7", "shift"),
     map("i").to("8", "shift"),
     map("o").to("9", "shift"),
-    map("␣").to("0", "shift"),
     map("p").to("0", "shift"),
     // period in the same layer
     map("/", "shift").to("."),
