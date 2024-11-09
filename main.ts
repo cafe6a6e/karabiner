@@ -31,6 +31,18 @@ writeToProfile(profileName, [
     map("i").to("8", "shift"),
     map("o").to("9", "shift"),
     map("p").to("0", "shift"),
+    map("m", "shift").to("1"),
+    map(",", "shift").to("2"),
+    map(".", "shift").to("3"),
+    map("j", "shift").to("4"),
+    map("k", "shift").to("5"),
+    map("l", "shift").to("6"),
+    map("u", "shift").to("7"),
+    map("i", "shift").to("8"),
+    map("o", "shift").to("9"),
+    map("p", "shift").to("0"),
+    map("␣", "shift").to("0"),
+    map("/", "shift").to("."),
   ]),
   layer("⇪", capsLockLayerVarName)
     .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
