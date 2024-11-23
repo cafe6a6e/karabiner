@@ -87,5 +87,7 @@ writeToProfile(profileName, [
     map("o", "⌥").to("9"),
     map("␣", "⌥").to("0"),
     map("/", "⌥").to("."),
+    map("l⌃").toIfAlone("␣", "l⌃").to("l⌘"),
+    map("l⌘").to("l⌃"),
   ]),
 ]);
