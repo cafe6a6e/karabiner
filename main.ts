@@ -45,10 +45,12 @@ writeToProfile(profileName, [
     map("/", "shift").to("."),
   ]),
   layer("⇪", capsLockLayerVarName)
-    .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
+    // .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
+    .configKey((v) => v.toIfAlone("escape"), true)
     .modifiers("??")
     .manipulators([
       map("f").to("left_shift"),
+      map("y").to("`"),
       map("u").to("["),
       map("i").to("]"),
       map("o").to("9", "shift"),
@@ -59,7 +61,7 @@ writeToProfile(profileName, [
       map("l").to("→"),
       map(";").to("-"),
       map("'").to("="),
-      map("n").to("`"),
+      map("n").to("="),
       map("m").to("'"),
       map("/").to("\\"),
       mapPointingButton("button1").to("←", "command"),
