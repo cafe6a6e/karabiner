@@ -34,6 +34,7 @@ writeToProfile(profileName, [
   ]),
   layer("tab", tabLayerVarName)
     .modifiers(["shift"])
+    .configKey((v) => v.toIfAlone("tab", "shift"))
     .manipulators([
       map("m").to("1"),
       map(",").to("2"),
