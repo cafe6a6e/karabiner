@@ -31,6 +31,7 @@ writeToProfile(profileName, [
     map("i").to("8", "shift"),
     map("o").to("9", "shift"),
     map("p").to("0", "shift"),
+    map("␣").to("␣"),
   ]),
   layer("tab", tabLayerVarName)
     .modifiers(["shift"])
