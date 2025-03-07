@@ -31,19 +31,25 @@ writeToProfile(profileName, [
     map("i").to("8", "shift"),
     map("o").to("9", "shift"),
     map("p").to("0", "shift"),
-    map("m", "shift").to("1"),
-    map(",", "shift").to("2"),
-    map(".", "shift").to("3"),
-    map("j", "shift").to("4"),
-    map("k", "shift").to("5"),
-    map("l", "shift").to("6"),
-    map("u", "shift").to("7"),
-    map("i", "shift").to("8"),
-    map("o", "shift").to("9"),
-    map("p", "shift").to("0"),
-    map("␣", "shift").to("0"),
-    map("/", "shift").to("."),
+    map("␣").to("␣"),
   ]),
+  layer("tab", tabLayerVarName)
+    .modifiers(["shift"])
+    .configKey((v) => v.toIfAlone("tab", "shift"))
+    .manipulators([
+      map("m").to("1"),
+      map(",").to("2"),
+      map(".").to("3"),
+      map("j").to("4"),
+      map("k").to("5"),
+      map("l").to("6"),
+      map("u").to("7"),
+      map("i").to("8"),
+      map("o").to("9"),
+      map("p").to("0"),
+      map("␣").to("0"),
+      map("/").to("."),
+    ]),
   layer("⇪", capsLockLayerVarName)
     // .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
     .configKey((v) => v.toIfAlone("escape"), true)
