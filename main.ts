@@ -18,6 +18,7 @@ if (!profileName) {
 
 const capsLockLayerVarName = "layer-caps_lock";
 const tabLayerVarName = "layer-tab";
+const optLayerVarName = "layer-opt";
 
 writeToProfile(profileName, [
   layer("tab", tabLayerVarName).manipulators([
@@ -87,17 +88,20 @@ writeToProfile(profileName, [
     map("p", "l⌃").to("=", "shift"),
     map("l⌃").toIfAlone("␣", "l⌃").to("l⌘"),
     map("l⌘").to("l⌃"),
-    map("h", "⌥").toMouseKey({ x: -1536 }),
-    map("j", "⌥").toMouseKey({ y: 1536 }),
-    map("k", "⌥").toMouseKey({ y: -1536 }),
-    map("l", "⌥").toMouseKey({ x: 1536 }),
-    map("␣", "⌥").toMouseKey({ speed_multiplier: 3 }),
+    map("h", "⌥").toMouseKey({ x: -800 }),
+    map("j", "⌥").toMouseKey({ y: 800 }),
+    map("k", "⌥").toMouseKey({ y: -800 }),
+    map("l", "⌥").toMouseKey({ x: 800 }),
+    map("␣", "⌥").toMouseKey({ speed_multiplier: 5 }),
     map("h", "⌥", "shift").toMouseKey({ horizontal_wheel: -36 }),
     map("j", "⌥", "shift").toMouseKey({ vertical_wheel: 36 }),
     map("k", "⌥", "shift").toMouseKey({ vertical_wheel: -36 }),
     map("l", "⌥", "shift").toMouseKey({ horizontal_wheel: 36 }),
     map("u", "⌥").toPointingButton("button1"),
     map("i", "⌥").toPointingButton("button2"),
-    map("u", "⌥", "shift").toPointingButton("button3"),
+    map("o", "⌥").toPointingButton("button3"),
+    map("f", "⌥").toPointingButton("button1"),
+    map("d", "⌥").toPointingButton("button2"),
+    map("s", "⌥").toPointingButton("button3"),
   ]),
 ]);
