@@ -91,6 +91,7 @@ writeToProfile(profileName, [
     map("j", "⌥").toMouseKey({ y: 1536 }),
     map("k", "⌥").toMouseKey({ y: -1536 }),
     map("l", "⌥").toMouseKey({ x: 1536 }),
+    map("␣", "⌥").toMouseKey({ speed_multiplier: 3 }),
     map("h", "⌥", "shift").toMouseKey({ horizontal_wheel: -36 }),
     map("j", "⌥", "shift").toMouseKey({ vertical_wheel: 36 }),
     map("k", "⌥", "shift").toMouseKey({ vertical_wheel: -36 }),
