@@ -33,6 +33,7 @@ writeToProfile(profileName, [
     map("o").to("9", "shift"),
     map("p").to("0", "shift"),
     map("␣").to("␣"),
+    map("n").to("="),
   ]),
   layer("⇪", capsLockLayerVarName)
     // .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
