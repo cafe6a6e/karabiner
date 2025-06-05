@@ -67,6 +67,7 @@ writeToProfile(profileName, [
       .condition(ifVar(capsLockLayerVarName)),
   ]),
   rule("Delete & Enter & Num key").manipulators([
+    map("'", "l⌃").to("="),
     map("[", null, "any").to("⌫"),
     map("'", null, "any").to("⏎"),
     map("[", "⌥", "any").to("⌫"),
@@ -83,7 +84,7 @@ writeToProfile(profileName, [
     map("␣", "l⌃").to("0"),
     map("/", "l⌃").to("."),
     map(";", "l⌃").to("-"),
-    map("n", "l⌃").to("="),
+    map("n", "l⌃").to(","),
     map("h", "l⌃").to("/"),
     map("y", "l⌃").to("8", "shift"),
     map("p", "l⌃").to("=", "shift"),
