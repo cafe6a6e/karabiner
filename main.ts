@@ -90,6 +90,8 @@ writeToProfile(profileName, [
     map("p", "l⌃").to("=", "shift"),
     map("l⌃").toIfAlone("␣", "l⌃").to("l⌘"),
     map("l⌘").to("l⌃"),
+    map("r⌘").toIfAlone("␣", "r⌃").to("r⌘"),
+    // Mouse manipulation
     map("h", "⌥").toMouseKey({ x: -800 }),
     map("j", "⌥").toMouseKey({ y: 800 }),
     map("k", "⌥").toMouseKey({ y: -800 }),
