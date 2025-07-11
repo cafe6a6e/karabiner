@@ -102,8 +102,10 @@ writeToProfile(profileName, [
     map("s", "⌥").toPointingButton("button3"),
   ]),
   rule("Enter, Delete and Input changes").manipulators([
-    map("[", "any").to("⌫"),
-    map("'", "any").to("⏎"),
+    map("[", null, "any").to("⌫"),
+    map("'", null, "any").to("⏎"),
+    map("[", "⌥", "any").to("⌫"),
+    map("'", "⌥", "any").to("⏎"),
     map("l⌃").toIfAlone("␣", "l⌃").to("l⌘"),
     map("l⌘").to("l⌃"),
     map("r⌘").toIfAlone("␣", "r⌃").to("r⌘"),
