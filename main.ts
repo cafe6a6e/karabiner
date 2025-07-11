@@ -18,7 +18,6 @@ if (!profileName) {
 
 const capsLockLayerVarName = "layer-caps_lock";
 const tabLayerVarName = "layer-tab";
-const optLayerVarName = "layer-opt";
 
 writeToProfile(profileName, [
   layer("tab", tabLayerVarName).manipulators([
@@ -66,12 +65,8 @@ writeToProfile(profileName, [
       })
       .condition(ifVar(capsLockLayerVarName)),
   ]),
-  rule("Delete & Enter & Num key").manipulators([
+  rule("Num keys").manipulators([
     map("'", "l⌃").to("="),
-    map("[", null, "any").to("⌫"),
-    map("'", null, "any").to("⏎"),
-    map("[", "⌥", "any").to("⌫"),
-    map("'", "⌥", "any").to("⏎"),
     map("m", "l⌃").to("1"),
     map(",", "l⌃").to("2"),
     map(".", "l⌃").to("3"),
@@ -88,10 +83,8 @@ writeToProfile(profileName, [
     map("h", "l⌃").to("/"),
     map("y", "l⌃").to("8", "shift"),
     map("p", "l⌃").to("=", "shift"),
-    map("l⌃").toIfAlone("␣", "l⌃").to("l⌘"),
-    map("l⌘").to("l⌃"),
-    map("r⌘").toIfAlone("␣", "r⌃").to("r⌘"),
-    // Mouse manipulation
+  ]),
+  rule("Mouse manipulations").manipulators([
     map("h", "⌥").toMouseKey({ x: -800 }),
     map("j", "⌥").toMouseKey({ y: 800 }),
     map("k", "⌥").toMouseKey({ y: -800 }),
@@ -107,5 +100,12 @@ writeToProfile(profileName, [
     map("f", "⌥").toPointingButton("button1"),
     map("d", "⌥").toPointingButton("button2"),
     map("s", "⌥").toPointingButton("button3"),
+  ]),
+  rule("Enter, Delete and Input changes").manipulators([
+    map("[", "any").to("⌫"),
+    map("'", "any").to("⏎"),
+    map("l⌃").toIfAlone("␣", "l⌃").to("l⌘"),
+    map("l⌘").to("l⌃"),
+    map("r⌘").toIfAlone("␣", "r⌃").to("r⌘"),
   ]),
 ]);
