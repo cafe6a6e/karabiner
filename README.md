@@ -6,17 +6,18 @@ My Karabiner-Element settings
 - Mac OS
 - Karabiner Element
   - Make sure that `Default profile` profile found in your Karabiner Element UI.
+- bun
 
 ## How to install
 
 `Default profile` is overwritten by
 
 ```
-$ yarn apply:default
+$ bun apply:default
 ```
 
 If you want to overwrite `'Your profile'`, run
 
 ```
-$ yarn apply 'Your profile'
+$ bun apply 'Your profile'
 ```
