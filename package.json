@@ -5,18 +5,18 @@
   "repository": "git@github.com:CafebabeTimeLapse/karabiner.git",
   "author": "CafebabeTimeLapse <taka1stdec@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
-    "preapply": "prettier -w main.ts",
-    "apply": "ts-node main.ts",
-    "apply:default": "yarn apply 'Default profile'"
+    "format": "bunx prettier -w main.ts",
+    "apply": "bun run main.ts",
+    "apply:default": "bun run main.ts 'Default profile'"
   },
   "dependencies": {
-    "karabiner.ts": "^1.30.0",
-    "prettier": "^3.3.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "karabiner.ts": "^1.30.0"
   },
   "devDependencies": {
-    "@types/node": "^20.14.10"
+    "@types/node": "^20.14.10",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
   }
 }
