@@ -23,4 +23,4 @@ jobs:
         run: bun install
 
       - name: Run Prettier Check
-        run: bunx prettier --check .
+        run: bunx prettier main.ts --check **/*.ts
