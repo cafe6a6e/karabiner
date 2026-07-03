@@ -9,7 +9,7 @@
       },
       "devDependencies": {
         "@types/node": "^26.1.0",
-        "prettier": "^3.3.2",
+        "prettier": "^3.9.4",
         "typescript": "^5.5.3",
       },
     },
@@ -19,7 +19,7 @@
 
     "karabiner.ts": ["karabiner.ts@1.36.0", "", {}, "sha512-iXg3/yZ46XodUXu2+TrIkrtbR71UFXR1dhDwpF8R6vCgd5i2r2+H7evfwQZM970oPd04PWdJk5AhvJY/582M7Q=="],
 
-    "prettier": ["prettier@3.8.1", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-UOnG6LftzbdaHZcKoPFtOcCKztrQ57WkHDeRD9t/PTQtmT0NHSeWWepj6pS0z/N7+08BHFDQVUrfmfMRcZwbMg=="],
+    "prettier": ["prettier@3.9.4", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-yWG/o/4oJfo036EKAfK6ACAoDOfHeRHx4tuxkfBZiauURiaSmYwlpOr5LQqKtIkRD2z1PLteme2WoxEnj4tHTg=="],
 
     "typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
 
