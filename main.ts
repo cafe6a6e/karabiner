@@ -143,7 +143,7 @@ writeToProfile(profileName, [
     map("-", null, "⌘⌃⇧").to("["),
     map("=", null, "⌘⌃⇧").to("]"),
     // top row
-    map("q", null, "⌘⌃⇧").to("'"),
+    map("q", null, "⌘⌃⇧").to("/"),
     map("w", null, "⌘⌃⇧").to(","),
     map("e", null, "⌘⌃⇧").to("."),
     map("r", null, "⌘⌃⇧").to("p"),
