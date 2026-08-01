@@ -12,11 +12,11 @@
     "apply:default": "bun run main.ts 'Default profile'"
   },
   "dependencies": {
-    "karabiner.ts": "^1.30.0"
+    "karabiner.ts": "^1.38.0"
   },
   "devDependencies": {
-    "@types/node": "^26.1.0",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3"
+    "@types/node": "^26.1.1",
+    "prettier": "^3.9.6",
+    "typescript": "^7.0.2"
   }
 }
