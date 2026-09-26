@@ -13,7 +13,7 @@ import { exit } from "process";
 const profileName = process.argv[2];
 
 if (!profileName) {
-  console.info("Profile name not set. \nSee README.md for the usage.\n");
+  console.error("Profile name not set.\nSee README.md for the usage.\n");
   exit(1);
 }
 
@@ -22,6 +22,13 @@ const tabLayerVarName = "layer-tab";
 const dvorakLayerVarName = "layer-dvorak";
 const dvorakNotificationId = "layer-dvorak-notification";
 
+// Layout conventions:
+// - Left ⌘ is a numpad layer (see "Num keys"); use right ⌘ for shortcuts.
+//   Tapping right ⌘ alone sends ⌃␣ (input source switch).
+// - Physical [ and ' are ⌫ and ⏎. Symbols on the right edge of QWERTY are
+//   moved to the Caps layer: Caps+u/i → [ ], Caps+m → ', Caps+; → -, Caps+/ → \.
+// - Dvorak (toggle: ⌥+Esc) puts / on the q key, since the Caps layer has no
+//   slot for it. Caps-layer symbols stay on the same physical keys.
 writeToProfile(profileName, [
   layer("tab", tabLayerVarName).manipulators([
     map("m").to("1", "shift"),
@@ -34,7 +41,6 @@ writeToProfile(profileName, [
     map("i").to("8", "shift"),
     map("o").to("9", "shift"),
     map("p").to("0", "shift"),
-    map("␣").to("␣"),
     map("n").to("="),
   ]),
   layer("⇪", capsLockLayerVarName)
@@ -95,8 +101,8 @@ writeToProfile(profileName, [
     map("␣", "⌥").toMouseKey({ speed_multiplier: 5 }),
     map("m", "⌥").toMouseKey({ vertical_wheel: 36 }),
     map(",", "⌥").toMouseKey({ vertical_wheel: -36 }),
-    map("m", "⌥", "shift").toMouseKey({ horizontal_wheel: 36 }),
-    map(",", "⌥", "shift").toMouseKey({ horizontal_wheel: -36 }),
+    map("m", "⌥⇧").toMouseKey({ horizontal_wheel: 36 }),
+    map(",", "⌥⇧").toMouseKey({ horizontal_wheel: -36 }),
     map("u", "⌥").toPointingButton("button1"),
     map("i", "⌥").toPointingButton("button2"),
     map("o", "⌥").toPointingButton("button3"),
@@ -107,13 +113,13 @@ writeToProfile(profileName, [
   rule("Enter, Delete and Input changes").manipulators([
     map("[", null, "any").to("⌫"),
     map("'", null, "any").to("⏎"),
-    map("[", "⌥", "any").to("⌫"),
-    map("'", "⌥", "any").to("⏎"),
     map("r⌘").toIfAlone("␣", "r⌃").to("r⌘"),
   ]),
   // Toggle the Dvorak layer with Option+Esc and briefly show the active layer
   // name. The delayed action removes the notification after ~1s (or on the next
   // key press, whichever comes first) so the badge only flashes.
+  // Only the physical Esc key toggles: the Esc sent by tapping Caps Lock is an
+  // output event and is not matched again.
   rule("Toggle Dvorak layer").manipulators([
     map("escape", "⌥")
       .condition(ifVar(dvorakLayerVarName, 0))
@@ -135,9 +141,9 @@ writeToProfile(profileName, [
       .parameters({ "basic.to_delayed_action_delay_milliseconds": 1000 }),
   ]),
   // Remap QWERTY physical keys to Dvorak output while the layer is active.
-  // Shift/command/control pass through so capitals and ⌘/⌃ shortcuts follow the
-  // Dvorak layout. Option is intentionally excluded so the ⌥ mouse layer keeps
-  // working on physical keys.
+  // Shift/⌃/right ⌘ pass through, so capitals and shortcuts follow Dvorak
+  // (left ⌘ stays the numpad layer). [ and ' are omitted: they are ⌫/⏎.
+  // Option is excluded so ⌥ characters stay on their QWERTY positions.
   rule("Dvorak layer", ifVar(dvorakLayerVarName, 1)).manipulators([
     // number row
     map("-", null, "⌘⌃⇧").to("["),
@@ -153,7 +159,6 @@ writeToProfile(profileName, [
     map("i", null, "⌘⌃⇧").to("c"),
     map("o", null, "⌘⌃⇧").to("r"),
     map("p", null, "⌘⌃⇧").to("l"),
-    map("[", null, "⌘⌃⇧").to("/"),
     map("]", null, "⌘⌃⇧").to("="),
     // home row
     map("s", null, "⌘⌃⇧").to("o"),
@@ -165,7 +170,6 @@ writeToProfile(profileName, [
     map("k", null, "⌘⌃⇧").to("t"),
     map("l", null, "⌘⌃⇧").to("n"),
     map(";", null, "⌘⌃⇧").to("s"),
-    map("'", null, "⌘⌃⇧").to("-"),
     // bottom row
     map("z", null, "⌘⌃⇧").to(";"),
     map("x", null, "⌘⌃⇧").to("q"),
