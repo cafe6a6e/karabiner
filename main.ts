@@ -60,6 +60,8 @@ writeToProfile(profileName, [
     .configKey((v) => v.toIfAlone("escape"), true)
     .modifiers("??")
     .manipulators([
+      // Hidden: hold f for Shift without leaving the home row, e.g. Shift+arrows
+      // to select text, or { } ~ _ + " | from the symbols below.
       map("f").to("left_shift"),
       map("y").to("`"),
       map("u").to("["),
