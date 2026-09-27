@@ -7,9 +7,11 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "format": "bunx prettier -w main.ts",
+    "format": "bunx prettier -w main.ts scripts",
     "apply": "bun run main.ts",
-    "apply:default": "bun run main.ts 'Default profile'"
+    "apply:default": "bun run main.ts 'Default profile'",
+    "ke:export": "bun run scripts/export-ke.ts",
+    "ke:install": "bun run scripts/export-ke.ts --install"
   },
   "dependencies": {
     "karabiner.ts": "^1.38.0"

@@ -1,42 +1,29 @@
-# karabiner
+# Zen 40 Layout
 
-My Karabiner-Elements settings
+![Zen 40 Layout cheat sheet](docs/zen40-layout-cheatsheet.webp)
 
-## Requirements
-
-- macOS
-- Karabiner-Elements
-  - Make sure that the `Default profile` profile exists in the Karabiner-Elements UI.
-- bun
-
-## How to install
-
-Install the dependencies first.
-
-```
-$ bun install
-```
-
-`Default profile` is overwritten by
-
-```
-$ bun apply:default
-```
-
-If you want to overwrite `'Your profile'`, run
-
-```
-$ bun apply 'Your profile'
-```
+A minimal layout for Karabiner-Elements. Alphanumerics, symbols, cursor movement and mouse control are all handled by about 40 keys around the home row, using layers.
 
 ## Layout
 
-| Key                      | Behavior                                                                                                       |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| Left ⌘ + right-hand keys | Numpad (`m , .` → `1 2 3`, `j k l` → `4 5 6`, `u i o` → `7 8 9`, `␣` → `0`)                                    |
-| Right ⌘                  | ⌘ for shortcuts; tap alone for ⌃␣ (input source switch)                                                        |
-| `[` / `'`                | ⌫ / ⏎                                                                                                          |
-| Caps Lock                | Tap for Esc; hold for the Caps layer (arrows on `h j k l`, `[ ]` on `u i`, `'` on `m`, `-` on `;`, `\` on `/`) |
-| Tab (hold)               | Shifted numbers (`! @ # …`) on the numpad positions                                                            |
-| ⌥ + keys                 | Mouse keys (move on `h j k l`, click on `u i o` / `f d s`); left ⌥ + `n m , .` scrolls ← ↓ ↑ →                 |
-| ⌥ + Esc                  | Toggle the Dvorak layer (physical Esc key only). `/` is on the `q` key                                         |
+| Layer            | Key              | Behavior                                                                                                                 |
+| ---------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Alphabets        | `[` / `'`        | ⌫ / ⏎                                                                                                                    |
+|                  | Right ⌘          | ⌘ for shortcuts; tap alone for ⌃␣ (input source switch)                                                                  |
+| Symbols I+Arrows | Caps Lock (hold) | Arrows on `h j k l`, symbols moved from the right edge (`[ ]` on `u i`, `'` on `m`, `-` on `;`, `\` on `/`); tap for Esc |
+| Symbols II       | Tab (hold)       | Shifted numbers (`! @ # …`) on the numeral positions                                                                     |
+| Numerals         | Left ⌘ (hold)    | Numpad on the right hand (`m , .` → `1 2 3`, `j k l` → `4 5 6`, `u i o` → `7 8 9`, `␣` → `0`)                            |
+| Mouse            | ⌥ (hold)         | Move on `h j k l`, click on `u i o` / `f d s`; left ⌥ + `n m , .` scrolls ← ↓ ↑ →                                        |
+| Dvorak           | ⌥ + Esc          | Toggle the Dvorak layer (physical Esc key only); `/` is on the `q` key                                                   |
+
+## How to install
+
+Requirements: macOS, [Karabiner-Elements](https://karabiner-elements.pqrs.org/) and [bun](https://bun.sh/).
+
+```
+$ bun install
+$ bun apply:default          # overwrite "Default profile"
+$ bun apply 'Your profile'   # or overwrite another profile
+```
+
+The profile must already exist in the Karabiner-Elements UI.
