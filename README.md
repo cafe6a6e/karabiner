@@ -6,15 +6,15 @@ A minimal layout for Karabiner-Elements. Alphanumerics, symbols, cursor movement
 
 ## Layout
 
-| Layer            | Key              | Behavior                                                                                                                 |
-| ---------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Alphabets        | `[` / `'`        | ⌫ / ⏎                                                                                                                    |
-|                  | Right ⌘          | ⌘ for shortcuts; tap alone for ⌃␣ (input source switch)                                                                  |
-| Symbols I+Arrows | Caps Lock (hold) | Arrows on `h j k l`, symbols moved from the right edge (`[ ]` on `u i`, `'` on `m`, `-` on `;`, `\` on `/`); tap for Esc |
-| Symbols II       | Tab (hold)       | Shifted numbers (`! @ # …`) on the numeral positions                                                                     |
-| Numerals         | Left ⌘ (hold)    | Numpad on the right hand (`m , .` → `1 2 3`, `j k l` → `4 5 6`, `u i o` → `7 8 9`, `␣` → `0`)                            |
-| Mouse            | ⌥ (hold)         | Move on `h j k l`, click on `u i o` / `f d s`; left ⌥ + `n m , .` scrolls ← ↓ ↑ →                                        |
-| Dvorak           | ⌥ + Esc          | Toggle the Dvorak layer (physical Esc key only); `/` is on the `q` key                                                   |
+| Layer            | Key              | Behavior                                                                                                                         |
+| ---------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Alphabets        | `[` / `'`        | ⌫ / ⏎                                                                                                                            |
+|                  | Right ⌘          | ⌘ for shortcuts; tap alone for ⌃␣ (input source switch)                                                                          |
+| Symbols I+Arrows | Caps Lock (hold) | Arrows on `h j k l`; `` ` [ ] ( ) `` on `y u i o p`, `-` on `;`, `=` on `n`, `'` on `m`, `< >` on `, .`, `\` on `/`; tap for Esc |
+| Symbols II       | Tab (hold)       | Shifted numbers (`! @ # …`) on the numeral positions                                                                             |
+| Numerals         | Left ⌘ (hold)    | Numpad on the right hand (`m , .` → `1 2 3`, `j k l` → `4 5 6`, `u i o` → `7 8 9`, `␣` → `0`)                                    |
+| Mouse            | Left ⌥ (hold)    | Move on `h j k l`, click on `u i o` / `f d s`, scroll ← ↓ ↑ → on `n m , .`                                                       |
+| Dvorak           | Left ⌥ + Esc     | Toggle the Dvorak layer (physical Esc key only); `/` is on the `q` key                                                           |
 
 ## How to install
 

@@ -28,16 +28,17 @@ const mouseSpeedMultiplier = 5;
 const mouseScrollSpeed = 36;
 
 // Layout conventions:
+// - Only left ⌥ switches layers (mouse keys, Dvorak toggle); right ⌥ is plain ⌥.
 // - Left ⌘ is a numpad layer (see "Num keys"); use right ⌘ for shortcuts.
 //   Tapping right ⌘ alone sends ⌃␣ (input source switch).
 // - Physical [ and ' are ⌫ and ⏎. Symbols on the right edge of QWERTY are
 //   moved to the Caps layer: Caps+u/i → [ ], Caps+m → ', Caps+; → -, Caps+/ → \.
-// - Dvorak (toggle: ⌥+Esc) puts / on the q key, since the Caps layer has no
+// - Dvorak (toggle: left ⌥+Esc) puts / on the q key, since the Caps layer has no
 //   slot for it. Caps-layer symbols stay on the same physical keys.
 writeToProfile(profileName, [
   layer("tab", tabLayerVarName)
     .description(
-      "Hold Tab: shifted numbers (! @ # …) on the left ⌘ numpad positions, n → =",
+      "Hold Tab: shifted numbers (! @ # …) on the left ⌘ numpad positions",
     )
     .manipulators([
       map("m").to("1", "shift"),
@@ -50,16 +51,17 @@ writeToProfile(profileName, [
       map("i").to("8", "shift"),
       map("o").to("9", "shift"),
       map("p").to("0", "shift"),
-      map("n").to("="),
     ]),
   layer("⇪", capsLockLayerVarName)
     .description(
-      "Caps Lock: tap for Esc, hold for arrows (h j k l) and symbols moved from the right edge",
+      "Caps Lock: tap for Esc, hold for arrows (h j k l) and ` [ ] ( ) - = ' < > \\",
     )
     // .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
     .configKey((v) => v.toIfAlone("escape"), true)
     .modifiers("??")
     .manipulators([
+      // Hidden: hold f for Shift without leaving the home row, e.g. Shift+arrows
+      // to select text, or { } ~ _ + " | from the symbols below.
       map("f").to("left_shift"),
       map("y").to("`"),
       map("u").to("["),
@@ -71,9 +73,11 @@ writeToProfile(profileName, [
       map("k").to("↑"),
       map("l").to("→"),
       map(";").to("-"),
-      map("'").to("="),
+      map("'").to("⏎"),
       map("n").to("="),
       map("m").to("'"),
+      map(",").to(",", "shift"),
+      map(".").to(".", "shift"),
       map("/").to("\\"),
       mapPointingButton("button1").to("←", "command"),
       mapPointingButton("button2").to("→", "command"),
@@ -110,24 +114,24 @@ writeToProfile(profileName, [
     map("p", "l⌘").to("=", "shift"),
   ]),
   rule(
-    "⌥ + h j k l moves the mouse, u i o / f d s click; left ⌥ + n m , . scrolls ← ↓ ↑ →",
+    "Left ⌥ + h j k l moves the mouse, u i o / f d s click, n m , . scrolls ← ↓ ↑ →",
   ).manipulators([
-    map("h", "⌥").toMouseKey({ x: -mouseMoveSpeed }),
-    map("j", "⌥").toMouseKey({ y: mouseMoveSpeed }),
-    map("k", "⌥").toMouseKey({ y: -mouseMoveSpeed }),
-    map("l", "⌥").toMouseKey({ x: mouseMoveSpeed }),
-    map("␣", "⌥").toMouseKey({ speed_multiplier: mouseSpeedMultiplier }),
-    // Scroll with left ⌥ + n m , . as ← ↓ ↑ →
+    map("h", "l⌥").toMouseKey({ x: -mouseMoveSpeed }),
+    map("j", "l⌥").toMouseKey({ y: mouseMoveSpeed }),
+    map("k", "l⌥").toMouseKey({ y: -mouseMoveSpeed }),
+    map("l", "l⌥").toMouseKey({ x: mouseMoveSpeed }),
+    map("␣", "l⌥").toMouseKey({ speed_multiplier: mouseSpeedMultiplier }),
+    // Scroll ← ↓ ↑ →
     map("n", "l⌥").toMouseKey({ horizontal_wheel: mouseScrollSpeed }),
     map("m", "l⌥").toMouseKey({ vertical_wheel: mouseScrollSpeed }),
     map(",", "l⌥").toMouseKey({ vertical_wheel: -mouseScrollSpeed }),
     map(".", "l⌥").toMouseKey({ horizontal_wheel: -mouseScrollSpeed }),
-    map("u", "⌥").toPointingButton("button1"),
-    map("i", "⌥").toPointingButton("button2"),
-    map("o", "⌥").toPointingButton("button3"),
-    map("f", "⌥").toPointingButton("button1"),
-    map("d", "⌥").toPointingButton("button2"),
-    map("s", "⌥").toPointingButton("button3"),
+    map("u", "l⌥").toPointingButton("button1"),
+    map("i", "l⌥").toPointingButton("button2"),
+    map("o", "l⌥").toPointingButton("button3"),
+    map("f", "l⌥").toPointingButton("button1"),
+    map("d", "l⌥").toPointingButton("button2"),
+    map("s", "l⌥").toPointingButton("button3"),
   ]),
   rule(
     "[ → Delete, ' → Return, tap right ⌘ → ⌃Space (input source)",
@@ -136,15 +140,15 @@ writeToProfile(profileName, [
     map("'", null, "any").to("⏎"),
     map("r⌘").toIfAlone("␣", "r⌃").to("r⌘"),
   ]),
-  // Toggle the Dvorak layer with Option+Esc and briefly show the active layer
+  // Toggle the Dvorak layer with left Option+Esc and briefly show the active layer
   // name. The delayed action removes the notification after ~1s (or on the next
   // key press, whichever comes first) so the badge only flashes.
   // Only the physical Esc key toggles: the Esc sent by tapping Caps Lock is an
   // output event and is not matched again.
   // The toggle and the layer are one rule so they are always enabled together.
   // Keep it below the Delete/Return and numpad rules, which take precedence.
-  rule("⌥ + Esc toggles a Dvorak layer (/ on the q key)").manipulators([
-    map("escape", "⌥")
+  rule("Left ⌥ + Esc toggles a Dvorak layer (/ on the q key)").manipulators([
+    map("escape", "l⌥")
       .condition(ifVar(dvorakLayerVarName, 0))
       .toVar(dvorakLayerVarName, 1)
       .toNotificationMessage(dvorakNotificationId, "⌨ Dvorak")
@@ -153,7 +157,7 @@ writeToProfile(profileName, [
         toRemoveNotificationMessage(dvorakNotificationId),
       )
       .parameters({ "basic.to_delayed_action_delay_milliseconds": 1000 }),
-    map("escape", "⌥")
+    map("escape", "l⌥")
       .condition(ifVar(dvorakLayerVarName, 1))
       .toVar(dvorakLayerVarName, 0)
       .toNotificationMessage(dvorakNotificationId, "⌨ QWERTY")
