@@ -1,6 +1,6 @@
 # Zen 40 Layout
 
-![Zen 40 Layout cheat sheet](docs/p40-layout-cheetsheet.webp)
+![Zen 40 Layout cheat sheet](docs/zen40-layout-cheatsheet.webp)
 
 A minimal layout for Karabiner-Elements. Alphanumerics, symbols, cursor movement and mouse control are all handled by about 40 keys around the home row, using layers.
 
