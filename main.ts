@@ -22,6 +22,10 @@ const tabLayerVarName = "layer-tab";
 const dvorakLayerVarName = "layer-dvorak";
 const dvorakNotificationId = "layer-dvorak-notification";
 
+const mouseMoveSpeed = 800;
+const mouseSpeedMultiplier = 5;
+const mouseScrollSpeed = 36;
+
 // Layout conventions:
 // - Left ⌘ is a numpad layer (see "Num keys"); use right ⌘ for shortcuts.
 //   Tapping right ⌘ alone sends ⌃␣ (input source switch).
@@ -94,15 +98,16 @@ writeToProfile(profileName, [
     map("p", "l⌘").to("=", "shift"),
   ]),
   rule("Mouse manipulations").manipulators([
-    map("h", "⌥").toMouseKey({ x: -800 }),
-    map("j", "⌥").toMouseKey({ y: 800 }),
-    map("k", "⌥").toMouseKey({ y: -800 }),
-    map("l", "⌥").toMouseKey({ x: 800 }),
-    map("␣", "⌥").toMouseKey({ speed_multiplier: 5 }),
-    map("m", "⌥").toMouseKey({ vertical_wheel: 36 }),
-    map(",", "⌥").toMouseKey({ vertical_wheel: -36 }),
-    map("m", "⌥⇧").toMouseKey({ horizontal_wheel: 36 }),
-    map(",", "⌥⇧").toMouseKey({ horizontal_wheel: -36 }),
+    map("h", "⌥").toMouseKey({ x: -mouseMoveSpeed }),
+    map("j", "⌥").toMouseKey({ y: mouseMoveSpeed }),
+    map("k", "⌥").toMouseKey({ y: -mouseMoveSpeed }),
+    map("l", "⌥").toMouseKey({ x: mouseMoveSpeed }),
+    map("␣", "⌥").toMouseKey({ speed_multiplier: mouseSpeedMultiplier }),
+    // Scroll with left ⌥ + n m , . as ← ↓ ↑ →
+    map("n", "l⌥").toMouseKey({ horizontal_wheel: mouseScrollSpeed }),
+    map("m", "l⌥").toMouseKey({ vertical_wheel: mouseScrollSpeed }),
+    map(",", "l⌥").toMouseKey({ vertical_wheel: -mouseScrollSpeed }),
+    map(".", "l⌥").toMouseKey({ horizontal_wheel: -mouseScrollSpeed }),
     map("u", "⌥").toPointingButton("button1"),
     map("i", "⌥").toPointingButton("button2"),
     map("o", "⌥").toPointingButton("button3"),

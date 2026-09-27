@@ -38,5 +38,5 @@ $ bun apply 'Your profile'
 | `[` / `'`                | ⌫ / ⏎                                                                                                          |
 | Caps Lock                | Tap for Esc; hold for the Caps layer (arrows on `h j k l`, `[ ]` on `u i`, `'` on `m`, `-` on `;`, `\` on `/`) |
 | Tab (hold)               | Shifted numbers (`! @ # …`) on the numpad positions                                                            |
-| ⌥ + keys                 | Mouse keys (move on `h j k l`, click on `u i o` / `f d s`, scroll on `m ,`)                                    |
+| ⌥ + keys                 | Mouse keys (move on `h j k l`, click on `u i o` / `f d s`); left ⌥ + `n m , .` scrolls ← ↓ ↑ →                 |
 | ⌥ + Esc                  | Toggle the Dvorak layer (physical Esc key only). `/` is on the `q` key                                         |
