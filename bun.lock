@@ -3,7 +3,7 @@
   "configVersion": 0,
   "workspaces": {
     "": {
-      "name": "karabiner",
+      "name": "karabiner-zen40",
       "dependencies": {
         "karabiner.ts": "^1.38.0",
       },
