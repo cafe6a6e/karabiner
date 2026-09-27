@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "main.ts",
   "repository": "git@github.com:cafe6a6e/karabiner-zen40.git",
-  "author": "CafebabeTimeLapse <taka1stdec@gmail.com>",
+  "author": "cafe6a6e (https://github.com/cafe6a6e)",
   "license": "MIT",
   "type": "module",
   "scripts": {
