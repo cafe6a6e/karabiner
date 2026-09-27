@@ -6,6 +6,7 @@ import {
   mouseMotionToScroll,
   rule,
   toRemoveNotificationMessage,
+  withCondition,
   writeToProfile,
 } from "karabiner.ts";
 import { exit } from "process";
@@ -34,20 +35,27 @@ const mouseScrollSpeed = 36;
 // - Dvorak (toggle: ⌥+Esc) puts / on the q key, since the Caps layer has no
 //   slot for it. Caps-layer symbols stay on the same physical keys.
 writeToProfile(profileName, [
-  layer("tab", tabLayerVarName).manipulators([
-    map("m").to("1", "shift"),
-    map(",").to("2", "shift"),
-    map(".").to("3", "shift"),
-    map("j").to("4", "shift"),
-    map("k").to("5", "shift"),
-    map("l").to("6", "shift"),
-    map("u").to("7", "shift"),
-    map("i").to("8", "shift"),
-    map("o").to("9", "shift"),
-    map("p").to("0", "shift"),
-    map("n").to("="),
-  ]),
+  layer("tab", tabLayerVarName)
+    .description(
+      "Hold Tab: shifted numbers (! @ # …) on the left ⌘ numpad positions, n → =",
+    )
+    .manipulators([
+      map("m").to("1", "shift"),
+      map(",").to("2", "shift"),
+      map(".").to("3", "shift"),
+      map("j").to("4", "shift"),
+      map("k").to("5", "shift"),
+      map("l").to("6", "shift"),
+      map("u").to("7", "shift"),
+      map("i").to("8", "shift"),
+      map("o").to("9", "shift"),
+      map("p").to("0", "shift"),
+      map("n").to("="),
+    ]),
   layer("⇪", capsLockLayerVarName)
+    .description(
+      "Caps Lock: tap for Esc, hold for arrows (h j k l) and symbols moved from the right edge",
+    )
     // .configKey((v) => v.toIfAlone("[", ["control"]), true) // ESC alternative in VIM
     .configKey((v) => v.toIfAlone("escape"), true)
     .modifiers("??")
@@ -71,14 +79,18 @@ writeToProfile(profileName, [
       mapPointingButton("button2").to("→", "command"),
       mapPointingButton("button3").to("mission_control"),
     ]),
-  rule("Trackball mouse motion").manipulators([
+  rule(
+    "Hold Caps Lock: mouse motion scrolls (requires the Caps Lock rule)",
+  ).manipulators([
     mouseMotionToScroll()
       .options({
         momentum_scroll_enabled: false,
       })
       .condition(ifVar(capsLockLayerVarName)),
   ]),
-  rule("Num keys").manipulators([
+  rule(
+    "Left ⌘ + right-hand keys → numpad (use right ⌘ for shortcuts)",
+  ).manipulators([
     map("'", "l⌘").to("="),
     map("m", "l⌘").to("1"),
     map(",", "l⌘").to("2"),
@@ -97,7 +109,9 @@ writeToProfile(profileName, [
     map("y", "l⌘").to("8", "shift"),
     map("p", "l⌘").to("=", "shift"),
   ]),
-  rule("Mouse manipulations").manipulators([
+  rule(
+    "⌥ + h j k l moves the mouse, u i o / f d s click; left ⌥ + n m , . scrolls ← ↓ ↑ →",
+  ).manipulators([
     map("h", "⌥").toMouseKey({ x: -mouseMoveSpeed }),
     map("j", "⌥").toMouseKey({ y: mouseMoveSpeed }),
     map("k", "⌥").toMouseKey({ y: -mouseMoveSpeed }),
@@ -115,7 +129,9 @@ writeToProfile(profileName, [
     map("d", "⌥").toPointingButton("button2"),
     map("s", "⌥").toPointingButton("button3"),
   ]),
-  rule("Enter, Delete and Input changes").manipulators([
+  rule(
+    "[ → Delete, ' → Return, tap right ⌘ → ⌃Space (input source)",
+  ).manipulators([
     map("[", null, "any").to("⌫"),
     map("'", null, "any").to("⏎"),
     map("r⌘").toIfAlone("␣", "r⌃").to("r⌘"),
@@ -125,7 +141,9 @@ writeToProfile(profileName, [
   // key press, whichever comes first) so the badge only flashes.
   // Only the physical Esc key toggles: the Esc sent by tapping Caps Lock is an
   // output event and is not matched again.
-  rule("Toggle Dvorak layer").manipulators([
+  // The toggle and the layer are one rule so they are always enabled together.
+  // Keep it below the Delete/Return and numpad rules, which take precedence.
+  rule("⌥ + Esc toggles a Dvorak layer (/ on the q key)").manipulators([
     map("escape", "⌥")
       .condition(ifVar(dvorakLayerVarName, 0))
       .toVar(dvorakLayerVarName, 1)
@@ -144,46 +162,46 @@ writeToProfile(profileName, [
         toRemoveNotificationMessage(dvorakNotificationId),
       )
       .parameters({ "basic.to_delayed_action_delay_milliseconds": 1000 }),
-  ]),
-  // Remap QWERTY physical keys to Dvorak output while the layer is active.
-  // Shift/⌃/right ⌘ pass through, so capitals and shortcuts follow Dvorak
-  // (left ⌘ stays the numpad layer). [ and ' are omitted: they are ⌫/⏎.
-  // Option is excluded so ⌥ characters stay on their QWERTY positions.
-  rule("Dvorak layer", ifVar(dvorakLayerVarName, 1)).manipulators([
-    // number row
-    map("-", null, "⌘⌃⇧").to("["),
-    map("=", null, "⌘⌃⇧").to("]"),
-    // top row
-    map("q", null, "⌘⌃⇧").to("/"),
-    map("w", null, "⌘⌃⇧").to(","),
-    map("e", null, "⌘⌃⇧").to("."),
-    map("r", null, "⌘⌃⇧").to("p"),
-    map("t", null, "⌘⌃⇧").to("y"),
-    map("y", null, "⌘⌃⇧").to("f"),
-    map("u", null, "⌘⌃⇧").to("g"),
-    map("i", null, "⌘⌃⇧").to("c"),
-    map("o", null, "⌘⌃⇧").to("r"),
-    map("p", null, "⌘⌃⇧").to("l"),
-    map("]", null, "⌘⌃⇧").to("="),
-    // home row
-    map("s", null, "⌘⌃⇧").to("o"),
-    map("d", null, "⌘⌃⇧").to("e"),
-    map("f", null, "⌘⌃⇧").to("u"),
-    map("g", null, "⌘⌃⇧").to("i"),
-    map("h", null, "⌘⌃⇧").to("d"),
-    map("j", null, "⌘⌃⇧").to("h"),
-    map("k", null, "⌘⌃⇧").to("t"),
-    map("l", null, "⌘⌃⇧").to("n"),
-    map(";", null, "⌘⌃⇧").to("s"),
-    // bottom row
-    map("z", null, "⌘⌃⇧").to(";"),
-    map("x", null, "⌘⌃⇧").to("q"),
-    map("c", null, "⌘⌃⇧").to("j"),
-    map("v", null, "⌘⌃⇧").to("k"),
-    map("b", null, "⌘⌃⇧").to("x"),
-    map("n", null, "⌘⌃⇧").to("b"),
-    map(",", null, "⌘⌃⇧").to("w"),
-    map(".", null, "⌘⌃⇧").to("v"),
-    map("/", null, "⌘⌃⇧").to("z"),
+    // Remap QWERTY physical keys to Dvorak output while the layer is active.
+    // Shift/⌃/right ⌘ pass through, so capitals and shortcuts follow Dvorak
+    // (left ⌘ stays the numpad layer). [ and ' are omitted: they are ⌫/⏎.
+    // Option is excluded so ⌥ characters stay on their QWERTY positions.
+    withCondition(ifVar(dvorakLayerVarName, 1))([
+      // number row
+      map("-", null, "⌘⌃⇧").to("["),
+      map("=", null, "⌘⌃⇧").to("]"),
+      // top row
+      map("q", null, "⌘⌃⇧").to("/"),
+      map("w", null, "⌘⌃⇧").to(","),
+      map("e", null, "⌘⌃⇧").to("."),
+      map("r", null, "⌘⌃⇧").to("p"),
+      map("t", null, "⌘⌃⇧").to("y"),
+      map("y", null, "⌘⌃⇧").to("f"),
+      map("u", null, "⌘⌃⇧").to("g"),
+      map("i", null, "⌘⌃⇧").to("c"),
+      map("o", null, "⌘⌃⇧").to("r"),
+      map("p", null, "⌘⌃⇧").to("l"),
+      map("]", null, "⌘⌃⇧").to("="),
+      // home row
+      map("s", null, "⌘⌃⇧").to("o"),
+      map("d", null, "⌘⌃⇧").to("e"),
+      map("f", null, "⌘⌃⇧").to("u"),
+      map("g", null, "⌘⌃⇧").to("i"),
+      map("h", null, "⌘⌃⇧").to("d"),
+      map("j", null, "⌘⌃⇧").to("h"),
+      map("k", null, "⌘⌃⇧").to("t"),
+      map("l", null, "⌘⌃⇧").to("n"),
+      map(";", null, "⌘⌃⇧").to("s"),
+      // bottom row
+      map("z", null, "⌘⌃⇧").to(";"),
+      map("x", null, "⌘⌃⇧").to("q"),
+      map("c", null, "⌘⌃⇧").to("j"),
+      map("v", null, "⌘⌃⇧").to("k"),
+      map("b", null, "⌘⌃⇧").to("x"),
+      map("n", null, "⌘⌃⇧").to("b"),
+      map(",", null, "⌘⌃⇧").to("w"),
+      map(".", null, "⌘⌃⇧").to("v"),
+      map("/", null, "⌘⌃⇧").to("z"),
+    ]),
   ]),
 ]);
