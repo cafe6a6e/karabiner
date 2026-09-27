@@ -1,6 +1,6 @@
 # Publish to KE-complex_modifications
 
-The rules can be published on [ke-complex-modifications.pqrs.org](https://ke-complex-modifications.pqrs.org/) as `personal_cafe6a6e.json` in the "Personal Settings" category.
+The rules can be published on [ke-complex-modifications.pqrs.org](https://ke-complex-modifications.pqrs.org/) as `personal_cafe6a6e_zen40.json` in the "Personal Settings" category.
 See the [upstream README](https://github.com/pqrs-org/KE-complex_modifications#how-to-add-your-rules) for the full procedure.
 
 1. Fork [pqrs-org/KE-complex_modifications](https://github.com/pqrs-org/KE-complex_modifications) and clone it next to this repository.
