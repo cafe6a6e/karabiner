@@ -15,7 +15,7 @@ import { exit } from "process";
 import { fileURLToPath } from "url";
 
 const maintainer = "cafe6a6e";
-const baseName = `personal_${maintainer}`;
+const baseName = `personal_${maintainer}_zen40`;
 const title = `Zen 40 Layout (@${maintainer})`;
 
 const repoRoot = fileURLToPath(new URL("..", import.meta.url));
