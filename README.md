@@ -1,83 +1,29 @@
 # karabiner
 
-My Karabiner-Elements settings
+![P40 layout cheat sheet](docs/p40-layout-cheetsheet.webp)
 
-## Requirements
-
-- macOS
-- Karabiner-Elements
-  - Make sure that the `Default profile` profile exists in the Karabiner-Elements UI.
-- bun
-
-## How to install
-
-Install the dependencies first.
-
-```
-$ bun install
-```
-
-`Default profile` is overwritten by
-
-```
-$ bun apply:default
-```
-
-If you want to overwrite `'Your profile'`, run
-
-```
-$ bun apply 'Your profile'
-```
+My Karabiner-Elements settings: a layer-based layout that keeps both hands on the home row.
 
 ## Layout
 
-| Key                      | Behavior                                                                                                       |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| Left ⌘ + right-hand keys | Numpad (`m , .` → `1 2 3`, `j k l` → `4 5 6`, `u i o` → `7 8 9`, `␣` → `0`)                                    |
-| Right ⌘                  | ⌘ for shortcuts; tap alone for ⌃␣ (input source switch)                                                        |
-| `[` / `'`                | ⌫ / ⏎                                                                                                          |
-| Caps Lock                | Tap for Esc; hold for the Caps layer (arrows on `h j k l`, `[ ]` on `u i`, `'` on `m`, `-` on `;`, `\` on `/`) |
-| Tab (hold)               | Shifted numbers (`! @ # …`) on the numpad positions                                                            |
-| ⌥ + keys                 | Mouse keys (move on `h j k l`, click on `u i o` / `f d s`); left ⌥ + `n m , .` scrolls ← ↓ ↑ →                 |
-| ⌥ + Esc                  | Toggle the Dvorak layer (physical Esc key only). `/` is on the `q` key                                         |
+| Layer            | Key              | Behavior                                                                                                                 |
+| ---------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Alphabets        | `[` / `'`        | ⌫ / ⏎                                                                                                                    |
+|                  | Right ⌘          | ⌘ for shortcuts; tap alone for ⌃␣ (input source switch)                                                                  |
+| Symbols I+Arrows | Caps Lock (hold) | Arrows on `h j k l`, symbols moved from the right edge (`[ ]` on `u i`, `'` on `m`, `-` on `;`, `\` on `/`); tap for Esc |
+| Symbols II       | Tab (hold)       | Shifted numbers (`! @ # …`) on the numeral positions                                                                     |
+| Numerals         | Left ⌘ (hold)    | Numpad on the right hand (`m , .` → `1 2 3`, `j k l` → `4 5 6`, `u i o` → `7 8 9`, `␣` → `0`)                            |
+| Mouse            | ⌥ (hold)         | Move on `h j k l`, click on `u i o` / `f d s`; left ⌥ + `n m , .` scrolls ← ↓ ↑ →                                        |
+| Dvorak           | ⌥ + Esc          | Toggle the Dvorak layer (physical Esc key only); `/` is on the `q` key                                                   |
 
-## Publish to KE-complex_modifications
+## How to install
 
-The rules can be published on [ke-complex-modifications.pqrs.org](https://ke-complex-modifications.pqrs.org/) as `personal_cafe6a6e.json` in the "Personal Settings" category.
-See the [upstream README](https://github.com/pqrs-org/KE-complex_modifications#how-to-add-your-rules) for the full procedure.
+Requirements: macOS, [Karabiner-Elements](https://karabiner-elements.pqrs.org/) and [bun](https://bun.sh/).
 
-1. Fork [pqrs-org/KE-complex_modifications](https://github.com/pqrs-org/KE-complex_modifications) and clone it next to this repository.
+```
+$ bun install
+$ bun apply:default          # overwrite "Default profile"
+$ bun apply 'Your profile'   # or overwrite another profile
+```
 
-   ```
-   $ git clone --depth 1 https://github.com/cafe6a6e/KE-complex_modifications.git ../KE-complex_modifications
-   $ git -C ../KE-complex_modifications submodule update --init --recursive --depth 1
-   $ git -C ../KE-complex_modifications switch -c personal-cafe6a6e
-   ```
-
-2. Export the ruleset and its extra description into the clone.
-   Without an argument, the files are written under `dist/`.
-
-   ```
-   $ bun ke:export ../KE-complex_modifications
-   ```
-
-3. Add the entry printed by the script to the `personal-settings` files in `public/groups.json`.
-4. Validate the files in the clone.
-
-   ```
-   $ make -C ../KE-complex_modifications all
-   ```
-
-5. Copy the ruleset to `~/.config/karabiner/assets/complex_modifications` and import it from Karabiner-Elements Settings > Complex Modifications > Add rule.
-
-   ```
-   $ bun ke:install
-   ```
-
-6. Commit, push and create a pull request to pqrs-org/KE-complex_modifications.
-
-Notes:
-
-- KE-complex_modifications is in the public domain, so the published rules are too.
-- Karabiner-Elements uses the first matching rule. Keep the rules in the order they are exported; the Dvorak rule must stay below the `[`/`'` and left ⌘ numpad rules.
-- The extra description shown on the site is `ke/extra_description.html`.
+The profile must already exist in the Karabiner-Elements UI.
