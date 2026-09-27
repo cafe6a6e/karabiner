@@ -1,8 +1,8 @@
-# karabiner
+# Zen 40 Layout
 
-![P40 layout cheat sheet](docs/p40-layout-cheetsheet.webp)
+![Zen 40 Layout cheat sheet](docs/p40-layout-cheetsheet.webp)
 
-My Karabiner-Elements settings: a layer-based layout that keeps both hands on the home row.
+A minimal layout for Karabiner-Elements. Alphanumerics, symbols, cursor movement and mouse control are all handled by about 40 keys around the home row, using layers.
 
 ## Layout
 
